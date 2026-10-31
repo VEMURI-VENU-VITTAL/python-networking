@@ -1,0 +1,7 @@
+loopbacks:
+ - id: 201
+   description: MGMT-TEST
+   ip: 10.201.1.1
+ - id: 202
+   description: APP-TEST
+   ip: 10.202.1.1

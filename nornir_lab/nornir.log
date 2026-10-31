@@ -1,0 +1,112 @@
+2026-10-30 15:46:49,014 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'show version | include uptime'} on 1 hosts
+2026-10-30 15:46:50,829 -  nornir.core -     INFO -        run() - Running task 'deploy_loopbacks' with args {} on 1 hosts
+2026-10-30 17:17:09,167 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'show version | include uptime'} on 1 hosts
+2026-10-30 17:17:19,201 - nornir.core.task -    ERROR -      start() - Host 'cat8kv': task 'netmiko_send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/home/venuv/netauto/venv/lib/python3.14/site-packages/netmiko/base_connection.py", line 1153, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/venuv/netauto/venv/lib/python3.14/site-packages/paramiko/client.py", line 364, in connect
+    sock.connect(addr)
+    ~~~~~~~~~~~~^^^^^^
+TimeoutError: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/venuv/netauto/venv/lib/python3.14/site-packages/nornir/core/task.py", line 102, in start
+    r = self.task(self, **self.params)
+  File "/home/venuv/netauto/venv/lib/python3.14/site-packages/nornir_netmiko/tasks/netmiko_send_command.py", line 26, in netmiko_send_command
+    net_connect = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/home/venuv/netauto/venv/lib/python3.14/site-packages/nornir/core/inventory.py", line 474, in get_connection
+    self.open_connection(
+    ~~~~~~~~~~~~~~~~~~~~^
+        connection=connection,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        extras=conn.extras,
+        ^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/venuv/netauto/venv/lib/python3.14/site-packages/nornir/core/inventory.py", line 526, in open_connection
+    conn_obj.open(
+    ~~~~~~~~~~~~~^
+        hostname=hostname,
+        ^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        configuration=configuration,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/venuv/netauto/venv/lib/python3.14/site-packages/nornir_netmiko/connections/netmiko.py", line 59, in open
+    connection = ConnectHandler(**parameters)
+  File "/home/venuv/netauto/venv/lib/python3.14/site-packages/netmiko/ssh_dispatcher.py", line 516, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/home/venuv/netauto/venv/lib/python3.14/site-packages/netmiko/base_connection.py", line 491, in __init__
+    self._open()
+    ~~~~~~~~~~^^
+  File "/home/venuv/netauto/venv/lib/python3.14/site-packages/netmiko/base_connection.py", line 509, in _open
+    self.establish_connection()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/venuv/netauto/venv/lib/python3.14/site-packages/netmiko/base_connection.py", line 1175, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.exceptions.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios 10.10.20.48:22
+
+
+
+2026-10-30 17:17:19,203 -  nornir.core -  WARNING -        run() - Task 'backup_config' has not been run – 0 hosts selected
+2026-10-30 17:17:19,203 -  nornir.core -  WARNING -        run() - Task 'deploy_loopbacks' has not been run – 0 hosts selected
+2026-10-30 17:17:53,113 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'show version | include uptime'} on 1 hosts
+2026-10-30 17:17:55,057 -  nornir.core -     INFO -        run() - Running task 'backup_config' with args {} on 1 hosts
+2026-10-30 17:17:55,473 - nornir.core.task -    ERROR -      start() - Host 'cat8kv': task 'backup_config' failed with traceback:
+Traceback (most recent call last):
+  File "/home/venuv/netauto/venv/lib/python3.14/site-packages/nornir/core/task.py", line 102, in start
+    r = self.task(self, **self.params)
+  File "/home/venuv/netauto/nornir_lab/scripts/backup_config.py", line 12, in backup_config
+    with open(f"backups/{task.hostname}.txt", "w") as f:
+                         ^^^^^^^^^^^^^
+AttributeError: 'Task' object has no attribute 'hostname'
+
+2026-10-30 17:17:55,475 -  nornir.core -  WARNING -        run() - Task 'deploy_loopbacks' has not been run – 0 hosts selected
+2026-10-30 17:25:14,412 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'show version | include uptime'} on 1 hosts
+2026-10-30 17:25:16,180 -  nornir.core -     INFO -        run() - Running task 'backup_config' with args {} on 1 hosts
+2026-10-30 17:25:16,594 - nornir.core.task -    ERROR -      start() - Host 'cat8kv': task 'backup_config' failed with traceback:
+Traceback (most recent call last):
+  File "/home/venuv/netauto/venv/lib/python3.14/site-packages/nornir/core/task.py", line 102, in start
+    r = self.task(self, **self.params)
+  File "/home/venuv/netauto/nornir_lab/scripts/backup_config.py", line 12, in backup_config
+    with open(f"backups/{task.hostname}.txt", "w") as f:
+                         ^^^^^^^^^^^^^
+AttributeError: 'Task' object has no attribute 'hostname'
+
+2026-10-30 17:25:16,595 -  nornir.core -  WARNING -        run() - Task 'deploy_loopbacks' has not been run – 0 hosts selected
+2026-10-30 17:26:14,184 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'show version | include uptime'} on 1 hosts
+2026-10-30 17:26:16,101 -  nornir.core -     INFO -        run() - Running task 'backup_config' with args {} on 1 hosts
+2026-10-30 17:26:16,490 - nornir.core.task -    ERROR -      start() - Host 'cat8kv': task 'backup_config' failed with traceback:
+Traceback (most recent call last):
+  File "/home/venuv/netauto/venv/lib/python3.14/site-packages/nornir/core/task.py", line 102, in start
+    r = self.task(self, **self.params)
+  File "/home/venuv/netauto/nornir_lab/scripts/backup_config.py", line 12, in backup_config
+    with open(f"backups/{task.hostname}.txt", "w") as f:
+                         ^^^^^^^^^^^^^
+AttributeError: 'Task' object has no attribute 'hostname'
+
+2026-10-30 17:26:33,667 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_command' with args {'command_string': 'show version | include uptime'} on 1 hosts
+2026-10-30 17:26:35,628 -  nornir.core -     INFO -        run() - Running task 'backup_config' with args {} on 1 hosts
+2026-10-30 17:26:36,042 - nornir.core.task -    ERROR -      start() - Host 'cat8kv': task 'backup_config' failed with traceback:
+Traceback (most recent call last):
+  File "/home/venuv/netauto/venv/lib/python3.14/site-packages/nornir/core/task.py", line 102, in start
+    r = self.task(self, **self.params)
+  File "/home/venuv/netauto/nornir_lab/scripts/backup_config.py", line 12, in backup_config
+    with open(f"backups/{task.hostname}.txt", "w") as f:
+                         ^^^^^^^^^^^^^
+AttributeError: 'Task' object has no attribute 'hostname'
+
+2026-10-30 17:26:36,044 -  nornir.core -  WARNING -        run() - Task 'deploy_loopbacks' has not been run – 0 hosts selected

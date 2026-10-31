@@ -1,0 +1,9 @@
+cat8kv:
+  hostname: 10.10.20.48
+  groups: [ios]
+  data:
+    site: lab
+    loopbacks:
+      - id: 401
+        ip: 10.41.1.1
+        description: Nornir-test

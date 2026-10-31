@@ -1,0 +1,4 @@
+{%for lo in loopbacks%}
+    interface {{lo.interface}}
+        ip address {{lo.ip}} 255.255.255.255
+{%endfor%}

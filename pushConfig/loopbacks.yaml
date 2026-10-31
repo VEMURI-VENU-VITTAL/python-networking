@@ -1,0 +1,7 @@
+loopbacks:
+  - id: 101
+    ip: 10.101.1.1
+    description: Mgmt-test
+  - id: 102
+    ip: 10.102.1.1
+    description: App-test
